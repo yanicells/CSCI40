@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %} 
+<style>
+    ul {
+        color: red;
+    }
+</style>
+<ul>
+    {% for task in tasks %}
+        <li>{{ task }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
