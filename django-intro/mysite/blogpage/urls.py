@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('task_list', views.task_list, name='task_list'),
+    path('list', views.task_list, name='task_list'),
 ]
+
+app_name = 'blogpage'
