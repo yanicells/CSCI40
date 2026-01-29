@@ -4,15 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Site{% endblock %}</title>
+    <style>
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+    </style>
     {% block styles %}
     {% endblock %}
 </head>
-<body>
-    <div id="content">
-        <h1>Welcome!</h1>
+<body style="font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff, #00ff00); background-size: 400% 400%; animation: rainbow 3s ease infinite; margin: 0; padding: 20px;">
+    <marquee style="background: red; color: yellow; font-size: 24px; font-weight: bold; padding: 10px; border: 5px solid lime; animation: wiggle 0.3s infinite; text-align: center;">🔥🔥🔥 WELCOME TO THE MOST BEAUTIFUL WEBSITE EVER 🔥🔥🔥</marquee>
+    <div id="content" style="background: rgba(255, 255, 255, 0.8); padding: 30px; border: 10px dashed lime; box-shadow: 10px 10px 0px red, -10px -10px 0px blue, 20px 20px 0px purple; margin: 20px;">
+        <h1 style="color: magenta; text-shadow: 3px 3px yellow, -3px -3px cyan, 5px 5px lime; font-size: 52px; animation: blink 0.5s infinite; letter-spacing: 15px; text-align: center;">✨ Welcome! ✨</h1>
         {% block content %}
         {% endblock %}
     </div>
+    <marquee style="background: red; color: yellow; font-size: 24px; font-weight: bold; padding: 10px; border: 5px solid lime; animation: wiggle 0.3s infinite; text-align: center;">🔥🔥🔥 LOCK IN TWIN 🔥🔥🔥</marquee>
     {% block scripts %}
     {% endblock %}
 </body>

@@ -9,6 +9,7 @@
         color: red;
     }
 </style>
+<h2 style="color: purple; text-shadow: 2px 2px orange;">Task Category: {{ slug }}</h2>
 <ul>
     {% for task in tasks %}
         <li>{{ task }}</li>
@@ -17,10 +18,10 @@
 <div>
     <h2>Should I do this?</h2>
     <p>{{ data.reason }}</p>
-    <h2>Quote of the Day</h2>
+    <!-- <h2>Quote of the Day</h2>
     <p>{{ data.kanye_quote.quote }}</p>
     <h2>What to email:</h2>
-    <p>{{ data.insult.insult }}</p>
+    <p>{{ data.insult.insult }}</p> -->
     <h2>Joke of the day</h2>
     <p>{{ data.joke.joke }}</p>
 </div>

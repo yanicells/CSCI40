@@ -5,7 +5,7 @@ import requests
 def index(request):
     return HttpResponse("<h1>Welcome to BlogPage</h1><p>This is the blog homepage.</p>")
 
-def task_list(request):
+def task_list(request, task_slug=None):
     url = "https://naas.isalman.dev/no"
 
     try:
@@ -52,7 +52,8 @@ def task_list(request):
             "task 3",
             "task 4"
         ],
-        "data": data
+        "data": data,
+        "slug": task_slug
     }
 
     return render(request, "blogpage/task_list.html", ctx)   
