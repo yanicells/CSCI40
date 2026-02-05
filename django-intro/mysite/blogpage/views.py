@@ -11,7 +11,7 @@ form = TaskForm()
 def index(request):
     return HttpResponse("<h1>Welcome to BlogPage</h1><p>This is the blog homepage.</p>")
 
-def task_list(request):
+def task_list(request, task_slug=None):
     url = "https://naas.isalman.dev/no"
     try:
         response = requests.get(url)
@@ -36,7 +36,7 @@ def task_list(request):
         "data": data,
     }
 
-    return render(request, "blogpage/task_list.html", {**ctx, 'form': form})   
+    return render(request, "blogpage/task_list.html", {**ctx, 'form': form, 'slug': task_slug or 'all'})   
 
 
 class TaskAddView(FormView):
