@@ -3,13 +3,8 @@
 
 {% block title %}Task List{% endblock %}
 
-{% block blogpage_content %} 
-<style>
-    ul {
-        color: red;
-    }
-</style>
-<h2 style="color: purple; text-shadow: 2px 2px orange;">Task Category: {{ slug }}</h2>
+{% block blogpage_content %}
+<h2>Task Category: {{ slug }}</h2>
 <ul>
     {% for task in tasks %}
         <li>{{ task }}</li>

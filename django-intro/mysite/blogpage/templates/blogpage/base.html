@@ -1,24 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div style="font-family: 'Comic Sans MS', 'Chalkboard SE', cursive; background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff); background-size: 400% 400%; animation: rainbow 3s ease infinite; padding: 20px; border: 10px dashed lime; box-shadow: 10px 10px 0px red, -10px -10px 0px blue;">
-    <style>
-        @keyframes rainbow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    </style>
-    <h1 style="color: magenta; text-shadow: 3px 3px yellow, -3px -3px cyan; font-size: 48px; animation: blink 0.5s infinite; letter-spacing: 10px;">✨ Tasks ✨</h1>
-    <marquee style="background: red; color: yellow; font-size: 20px; animation: wiggle 0.5s infinite;">🔥🔥🔥 WELCOME TO THE TASK ZONE 🔥🔥🔥</marquee>
+<div>
+    <h1>Tasks</h1>
     {% block blogpage_content %}
     {% endblock %}
 </div>
