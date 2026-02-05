@@ -4,10 +4,13 @@
 {% block title %}Task List{% endblock %}
 
 {% block blogpage_content %}
-<h2>Task Category: {{ slug }}</h2>
-<ul>
+<div>
+    {% if slug %}
+    <h2>Task Category: {{ slug }}</h2>
+    {% endif %}
+    <ul>
     {% for task in tasks %}
-        <li>{{ task }}</li>
+        <li>{{ task.0 }} - {{ task.1|date:"Y-m-d" }}</li>
     {% endfor %}
 </ul>
 <div>
@@ -15,6 +18,7 @@
     <p>{{ data.reason }}</p>
     <h2>Joke of the day</h2>
     <p>{{ data.joke.joke }}</p>
+</div>
 </div>
 
 {% endblock blogpage_content %}

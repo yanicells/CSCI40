@@ -1,0 +1,14 @@
+{% extends "blogpage/base.html" %}
+{% load static %}
+
+{% block title %}Task List{% endblock %}
+
+{% block blogpage_content %}
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock blogpage_content %}

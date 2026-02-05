@@ -1,19 +1,17 @@
+from django.views.generic import FormView
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 
 from .forms import TaskForm
 
+tasks = []
+form = TaskForm()
+
 def index(request):
     return HttpResponse("<h1>Welcome to BlogPage</h1><p>This is the blog homepage.</p>")
 
-def task_list(request, task_slug=None):
-
-    if request.method == "POST":
-        form = TaskForm(request.POST)
-    else:
-        form = TaskForm()
-
+def task_list(request):
     url = "https://naas.isalman.dev/no"
     try:
         response = requests.get(url)
@@ -34,14 +32,18 @@ def task_list(request, task_slug=None):
         return HttpResponse(f"Error fetching joke: {e}", status=500)
 
     ctx={
-        "tasks": [
-            "task 1",
-            "task 2",
-            "task 3",
-            "task 4"
-        ],
+        "tasks": tasks,
         "data": data,
-        "slug": task_slug
     }
 
     return render(request, "blogpage/task_list.html", {**ctx, 'form': form})   
+
+
+class TaskAddView(FormView):
+    template_name = 'blogpage/task_add.html'
+    form_class = TaskForm
+    success_url = '/blogpage/list/'
+
+    def form_valid(self, form):
+        tasks.append((form.cleaned_data['task_name'], form.cleaned_data['task_date']))
+        return super().form_valid(form)
