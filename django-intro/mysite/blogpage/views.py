@@ -8,14 +8,13 @@ def index(request):
     return HttpResponse("<h1>Welcome to BlogPage</h1><p>This is the blog homepage.</p>")
 
 def task_list(request, task_slug=None):
-    url = "https://naas.isalman.dev/no"
 
     if request.method == "POST":
         form = TaskForm(request.POST)
     else:
         form = TaskForm()
 
-
+    url = "https://naas.isalman.dev/no"
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -23,25 +22,6 @@ def task_list(request, task_slug=None):
 
     except requests.RequestException as e:
         return HttpResponse(f"Error fetching data: {e}", status=500)
-
-    url = "https://api.kanye.rest/"
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        kanye_data = response.json()
-        data['kanye_quote'] = kanye_data
-
-    except requests.RequestException as e:
-        return HttpResponse(f"Error fetching Kanye quote: {e}", status=500)
-    
-    url = "https://evilinsult.com/generate_insult.php?lang=en&type=json"
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        insult_data = response.json()
-        data['insult'] = insult_data
-    except requests.RequestException as e:
-        return HttpResponse(f"Error fetching insult: {e}", status=500)
 
     url = "https://icanhazdadjoke.com/"
     try:
