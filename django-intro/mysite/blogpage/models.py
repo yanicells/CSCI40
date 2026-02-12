@@ -1,5 +1,5 @@
-frp, datetime import datetime
-from djangp.urls import reverse
+from datetime import datetime
+from django.urls import reverse
 from django.db import models
 
 class TaskGroup(models.Model):
@@ -18,3 +18,11 @@ class Task(models.Model):
     @property
     def is_due(self):
         return datetime.now() >= self.due_date
+
+    class Meta:
+        ordering = ['due_date']
+        unique_together = ['due_date', 'name']
+        verbose_name = 'Task'
+        verbose_name_plural = 'Tasks'
+
+        
