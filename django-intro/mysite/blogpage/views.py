@@ -2,10 +2,9 @@ from django.views.generic import FormView
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import requests
-
+from .models import Task, TaskGroup
 from .forms import TaskForm
 
-tasks = []
 form = TaskForm()
 
 def index(request):
@@ -32,12 +31,11 @@ def task_list(request, task_slug=None):
         return HttpResponse(f"Error fetching joke: {e}", status=500)
 
     ctx={
-        "tasks": tasks,
+        "tasks": Task.objects.all(),
         "data": data,
     }
 
-    return render(request, "blogpage/task_list.html", {**ctx, 'form': form, 'slug': task_slug or 'all'})   
-
+    return render(request, "blogpage/task_list.html", {**ctx, 'form': TaskForm(), 'slug': task_slug or 'all'})   
 
 class TaskAddView(FormView):
     template_name = 'blogpage/task_add.html'
