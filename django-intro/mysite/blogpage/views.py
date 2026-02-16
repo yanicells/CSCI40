@@ -4,11 +4,21 @@ from django.shortcuts import render, redirect
 import requests
 from .models import Task, TaskGroup
 from .forms import TaskForm
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 form = TaskForm()
 
 def index(request):
     return HttpResponse("<h1>Welcome to BlogPage</h1><p>This is the blog homepage.</p>")
+
+class TaskListView(ListView):
+    model = Task
+    template_name = 'task_list.html'
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'task_detail.html'
 
 def task_detail(request, id):
     task = Task.objects.get(pk=id)

@@ -4,5 +4,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blogpage/', include('blogpage.urls'), name='blogpage'),
-    path('list/<int:id>', include)
+    path('list/<int:pk>/detail', TaskDetailView.as_view(), name='task-detail')
+
 ]
