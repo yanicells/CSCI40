@@ -21,6 +21,7 @@ class Task(models.Model):
 
     class Meta:
         ordering = ['name']
+        unique_together = ['due_date', 'name']
         verbose_name = 'task group'
         verbose_name_plural = 'task groups'
 
