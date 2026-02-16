@@ -10,6 +10,13 @@ form = TaskForm()
 def index(request):
     return HttpResponse("<h1>Welcome to BlogPage</h1><p>This is the blog homepage.</p>")
 
+def task_detail(request, id):
+    task = Task.objects.get(pk=id)
+
+    return render(request, "blogpage/task_dtail.html", {
+        "task": task,
+    })
+
 def task_list(request, task_slug=None):
     url = "https://naas.isalman.dev/no"
     try:
